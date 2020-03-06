@@ -9,4 +9,8 @@
 C:/Users/Sven.VOLERY/Documents/GitHub/Bataille-Navale/Bataille_Navale/main.c
 stdio.h
 -
+stdlib.h
+-
+Windows.h
+-
 
