@@ -1,74 +1,14 @@
-/**
- * \project Bataille Navale
- * \author Volery Sven
- * \date 04.03.2020
- * \version 0.1
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
-#include <string.h>
-#include <time.h>
-
-//Afficher les accents
 #pragma execution_character_set("utf-8")
 
-//Taille max des colonnes de la grille
-#define SIZE_MAX_COLUMN 10
-//Taille max des lignes de la grille
-#define SIZE_MAX_ROW 10
-//Taille de la grille  (colonnes)
-#define COLUMN 9
-//Taille de la grille (lignes)
-#define ROW 9
-//Nom des colonnes
-#define Entete_Grille  {'A','B','C','D','E','F','G','H','I','J'}
-
-//Variable si oui ou non on sort du programme
-int quit = 0;
 
 void jouer(){
-
-    //Grille
-    char entete_grille[SIZE_MAX_ROW]  = Entete_Grille;
-    char grille_user[SIZE_MAX_COLUMN][SIZE_MAX_ROW] = {
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-    };
-
-
-    //Affichage de la grille
-
-    //Afficher entête des colonnes
-    for (int t = 0; t < ROW; t++){
-        if(t == 0){
-            printf("%8c", entete_grille[t]);
-        }else{
-            printf("%7c", entete_grille[t]);
-        }
-    }
-    printf("\n");
-    for (int colonne = 0; colonne < COLUMN; colonne++ ){
-        printf("%d", colonne + 1);
-        for (int ligne = 0; ligne < ROW; ligne++){
-            printf("%7c", grille_user[colonne][ligne] );
-        }
-        printf("\n");
-    }
-    system("pause");
+    printf("Game");
 }
 
-void aide()
-{
+void aide(){
     FILE* fichier = NULL;
     int caractereActuel = 0;
 
@@ -85,6 +25,7 @@ void aide()
 
         fclose(fichier);
     }
+    return 0;
 }
 
 void menu(){
@@ -125,20 +66,13 @@ void menu(){
 }
 
 int main() {
-    int choix = 0;
-    //Afficher les accents
     SetConsoleOutputCP(65001);
 
    //appeler fonction menu
-    system("cls");
-   menu(choix);
+   menu();
 
 
    printf("\n\n");
-
-    if(quit == 0){
-        return main();
-    } else {
-        return 0;
-    }
+   system("pause");
+    return 0;
 }
