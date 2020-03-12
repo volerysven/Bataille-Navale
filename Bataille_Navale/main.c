@@ -22,7 +22,7 @@ void aide(){
             printf("%c", caractereActuel);
         }
         while (caractereActuel != EOF);
-    
+
         fclose(fichier);
     }
     return 0;
