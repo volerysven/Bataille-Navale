@@ -15,13 +15,13 @@
 #pragma execution_character_set("utf-8")
 
 //Taille max des colonnes de la grille
-#define taille_max_colonnes 10
+#define SIZE_MAX_COLUMN 10
 //Taille max des lignes de la grille
-#define taille_max_lignes 10
+#define SIZE_MAX_ROW 10
 //Taille de la grille  (colonnes)
-#define Colonnes 9
+#define COLUMN 9
 //Taille de la grille (lignes)
-#define Lignes 9
+#define ROW 9
 //Nom des colonnes
 #define Entete_Grille  {'A','B','C','D','E','F','G','H','I','J'}
 
@@ -31,8 +31,8 @@ int quit = 0;
 void jouer(){
 
     //Grille
-    char entete_grille[taille_max_lignes]  = Entete_Grille;
-    char grille_utillisateur[taille_max_colonnes][taille_max_lignes] = {
+    char entete_grille[SIZE_MAX_ROW]  = Entete_Grille;
+    char grille_user[SIZE_MAX_COLUMN][SIZE_MAX_ROW] = {
             {'-','-','-','-','-','-','-','-','-','-'},
             {'-','-','-','-','-','-','-','-','-','-'},
             {'-','-','-','-','-','-','-','-','-','-'},
@@ -49,7 +49,7 @@ void jouer(){
     //Affichage de la grille
 
     //Afficher entête des colonnes
-    for (int t = 0; t < Lignes; t++){
+    for (int t = 0; t < ROW; t++){
         if(t == 0){
             printf("%8c", entete_grille[t]);
         }else{
@@ -57,10 +57,10 @@ void jouer(){
         }
     }
     printf("\n");
-    for (int colonne = 0; colonne < Colonnes; colonne++ ){
+    for (int colonne = 0; colonne < COLUMN; colonne++ ){
         printf("%d", colonne + 1);
-        for (int ligne = 0; ligne < Lignes; ligne++){
-            printf("%7c", grille_utillisateur[colonne][ligne] );
+        for (int ligne = 0; ligne < ROW; ligne++){
+            printf("%7c", grille_user[colonne][ligne] );
         }
         printf("\n");
     }
