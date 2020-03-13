@@ -42,7 +42,7 @@ int jouer() {
     printf("\n");
     while (jeu == true) {
         for (int a = 0; a < 10; a++) {
-            printf("%d\t",a+1);
+            printf("%d\t", a + 1);
             for (int z = 0; z < 10; z++) {
 
                 printf("%c\t", grilledebase[a][z]);
@@ -50,10 +50,14 @@ int jouer() {
             printf("\n");
         }
 
+//Info toucher ou louper
+        printf("\nT = Toucher\n");
+        printf("L = Louper\n");
+
 //Demande des tires verticales et horizontal
-        printf("Tir horizontal\n");
+        printf("\nTir horizontal : ");
         scanf("%d", &horizontal);
-        printf("Tir vertical");
+        printf("Tir vertical : ");
         scanf("%d", &vertical);
 
         horizontal = horizontal - 1;
@@ -101,7 +105,7 @@ void menu() {
     printf("2 - Scores \n");
     printf("3 - S'authentifier \n");
     printf("4 - Aide \n");
-    printf("5 - Quitter \n");
+    printf("5 - Quitter \n\n");
     scanf("%d", &choixmenu);
 
 
