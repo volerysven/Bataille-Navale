@@ -19,6 +19,7 @@ char grilledebase[10][10] = {
         {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
 };
 
+
 //Grille_Bateaux
 int masquegrille[10][10] = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -33,16 +34,17 @@ int masquegrille[10][10] = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };
 
+
 int jouer() {
     bool jeu = true;
     int a = 0, z = 0, vertical, horizontal;
 
-
+    printf("\n");
     while (jeu == true) {
         for (int a = 0; a < 10; a++) {
-
-
+            printf("%d\t",a+1);
             for (int z = 0; z < 10; z++) {
+
                 printf("%c\t", grilledebase[a][z]);
             }
             printf("\n");
