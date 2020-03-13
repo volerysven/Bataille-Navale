@@ -1,76 +1,93 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
+#include <stdbool.h>
+
 #pragma execution_character_set("utf-8")
 
-//Taille max des colonnes de la grille
-#define taille_max_collones 10
-//Taille max des lignes de la grille
-#define taille_max_lignes 10
-//Taille de la grille  (colonnes)
-#define colonnes 9
-//Taille de la grille (lignes)
-#define lignes 9
+//GRILLE
+char grilledebase[10][10] = {
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+        {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+};
 
-//Nom des colonnes
-#define enteteGrille  {'A','B','C','D','E','F','G','H','I','J'}
+int masquegrille[10][10] = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 5, 5, 5, 5, 5, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 4, 0},
+        {0, 0, 3, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 3, 0, 0, 0, 0, 0, 4, 0},
+        {0, 0, 3, 0, 0, 0, 0, 0, 4, 0},
+        {0, 0, 0, 0, 3, 3, 3, 0, 0, 0},
+        {0, 2, 2, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+};
 
-void jouer(){
+int jouer() {
+    bool jeu = true;
+    int a = 0, z = 0, vertical, horizontal;
 
-    //GRILLE
-    char entetegrille[taille_max_lignes] = enteteGrille;
-    char grilleUtillisateur[taille_max_collones][taille_max_lignes] = {
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-            {'-','-','-','-','-','-','-','-','-','-'},
-    };
 
-    //Afficher la grille
-    for (int i = 0; i < lignes; i++){
-        if (i == 0){
-            printf("&8c", entetegrille[i]);
-        } else{
-            printf("%7c", entetegrille[i]);
+    while (jeu == true) {
+        for (int a = 0; a < 10; a++) {
+
+
+            for (int z = 0; z < 10; z++) {
+                printf("%c\t", grilledebase[a][z]);
+            }
+            printf("\n");
         }
-    }
 
-    printf("\n");
-    for (int colonne = 0; colonne < colonnes; colonne++) {
-        printf("%d", colonne + 1);
-        for (int ligne = 0; ligne < lignes; ligne++) {
-            printf("%7c", grilleUtillisateur[colonne][ligne]);
+
+        printf("Tir horizontal\n");
+        scanf("%d", &horizontal);
+        printf("Tir vertical");
+        scanf("%d", &vertical);
+
+        horizontal = horizontal - 1;
+        vertical = vertical - 1;
+
+        if (masquegrille[horizontal][vertical] == 1 ||
+            masquegrille[horizontal][vertical] == 2 ||
+            masquegrille[horizontal][vertical] == 3 ||
+            masquegrille[horizontal][vertical] == 4 ||
+            masquegrille[horizontal][vertical] == 5 ||
+            masquegrille[horizontal][vertical] == 6) {
+            grilledebase[horizontal][vertical] = 'T';
+        } else {
+            grilledebase[horizontal][vertical] = 'L';
         }
-        printf("\n");
+        system("cls");
     }
+}
 
-void aide(){
-    FILE* fichier = NULL;
+void aide() {
+    FILE *fichier = NULL;
     int caractereActuel = 0;
 
     fichier = fopen("aide.txt", "r");
 
-    if (fichier != NULL)
-    {
-        do
-        {
+    if (fichier != NULL) {
+        do {
             caractereActuel = fgetc(fichier);
             printf("%c", caractereActuel);
-        }
-        while (caractereActuel != EOF);
-
+        } while (caractereActuel != EOF);
+        system("pause");
         fclose(fichier);
     }
-    return 0;
+
 }
 
-void menu(){
+void menu() {
     int choixmenu;
 
     printf("Bataille Navale\n\n");
@@ -83,8 +100,9 @@ void menu(){
     scanf("%d", &choixmenu);
 
 
-    switch(choixmenu){
-        case 1: jouer();
+    switch (choixmenu) {
+        case 1:
+            jouer();
             break;
 
         case 2:
@@ -95,15 +113,17 @@ void menu(){
             printf("S'authentifier\n");
             break;
 
-        case 4: aide();
+        case 4:
+            aide();
             break;
 
         case 5:
             break;
 
-        default:system("cls");
-                menu();
-                break;
+        default:
+            system("cls");
+            menu();
+            break;
     }
 }
 
@@ -113,8 +133,6 @@ int main() {
     //appeler fonction menu
     menu();
 
-
-    printf("\n\n");
-    system("pause");
     return 0;
 }
+
