@@ -5,7 +5,7 @@
 
 #pragma execution_character_set("utf-8")
 
-//GRILLE
+//Grille
 char grilledebase[10][10] = {
         {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
         {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
@@ -19,6 +19,7 @@ char grilledebase[10][10] = {
         {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
 };
 
+//Grille_Bateaux
 int masquegrille[10][10] = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 5, 5, 5, 5, 5, 0, 0, 0, 0},
@@ -47,7 +48,7 @@ int jouer() {
             printf("\n");
         }
 
-
+//Demande des tires verticales et horizontal
         printf("Tir horizontal\n");
         scanf("%d", &horizontal);
         printf("Tir vertical");
@@ -56,6 +57,7 @@ int jouer() {
         horizontal = horizontal - 1;
         vertical = vertical - 1;
 
+//Si la case choisie et entre 1 et 6 touché donc afficher 'T' sinon afficher 'L'
         if (masquegrille[horizontal][vertical] == 1 ||
             masquegrille[horizontal][vertical] == 2 ||
             masquegrille[horizontal][vertical] == 3 ||
@@ -70,6 +72,7 @@ int jouer() {
     }
 }
 
+//Va chercher le fichier aide pour qu'il puisse s'afficher
 void aide() {
     FILE *fichier = NULL;
     int caractereActuel = 0;
