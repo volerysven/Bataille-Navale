@@ -4,7 +4,6 @@
 #include <stdbool.h>
 
 #pragma execution_character_set("utf-8")
-
 //Grille
 char grilledebase[10][10] = {
         {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
@@ -35,12 +34,17 @@ int masquegrille[10][10] = {
 };
 
 
+
 int jouer() {
     bool jeu = true;
     int a = 0, z = 0, vertical, horizontal;
 
     printf("\n");
     while (jeu == true) {
+        for (int z = -1; z < 10; ++z) {
+            printf("%d\t", z + 1);
+        }
+        printf("\n");
         for (int a = 0; a < 10; a++) {
             printf("%d\t", a + 1);
             for (int z = 0; z < 10; z++) {
