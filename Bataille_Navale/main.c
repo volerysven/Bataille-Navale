@@ -67,6 +67,8 @@ int jouer() {
         horizontal = horizontal - 1;
         vertical = vertical - 1;
 
+
+        
 //Si la case choisie et entre 1 et 6 touché donc afficher 'T' sinon afficher 'L'
         if (masquegrille[horizontal][vertical] == 1 ||
             masquegrille[horizontal][vertical] == 2 ||
