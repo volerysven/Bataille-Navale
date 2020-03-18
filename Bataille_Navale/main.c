@@ -59,10 +59,10 @@ int jouer() {
         printf("L = Louper\n");
 
 //Demande des tires verticales et horizontal
-        printf("\nTir horizontal : ");
-        scanf("%d", &horizontal);
-        printf("Tir vertical : ");
+        printf("\nTir Vertical : ");
         scanf("%d", &vertical);
+        printf("Tir horizontal : ");
+        scanf("%d", &horizontal);
 
         horizontal = horizontal - 1;
         vertical = vertical - 1;
